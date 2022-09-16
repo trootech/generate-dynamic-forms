@@ -1,0 +1,40 @@
+
+<app-login-header>
+  <div class="container form-container">
+    <form [formGroup]="loginForm" #dynamicForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="col-md-12">
+        <h3 class="card-header text-center">{{messageContent.LoginForm}}</h3>
+        <hr />
+        <div class="form-body">
+          <div class="form-row">
+            <div class="col-md-12 col-sm-12" class="form-group form-fields">
+              <div class="form-group  form-item">
+                <label>{{messageContent.RegisterFormEmail}}</label>
+                <input name="email" type="email" formControlName="email"
+                  class="form-control input-sm" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+              </div>
+              <div *ngIf="submitted && f.email.errors">
+                <div *ngIf="f.email.errors.required" class="error-message">{{messageContent.requireErrorEmail}}</div>
+              </div>
+              <div class="form-group  form-item">
+                <label>{{messageContent.RegisterFormPassword}}</label>
+                <input name="password" type="password" formControlName="password"
+                  class="form-control input-sm" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              </div>
+              <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required" class="error-message">{{messageContent.requireErrorPassword}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="card-footer text-center form-body text-end">
+          <button class="btn btn-primary fw-bold ">{{messageContent.LoginButtom}}</button>
+          <a class="fw-bold forgot-btn" routerLink="/forget-password">{{messageContent.forgetpassword}}</a>
+        </div>
+       
+      </div>
+    </form>
+  </div>
+</app-login-header>
+

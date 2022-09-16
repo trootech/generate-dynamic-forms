@@ -1,0 +1,21 @@
+<form [formGroup]="formCreate"  #rform="ngForm">
+    <div class="col-md-12 col-sm-12"  class="form-group form-fields">
+        <div class="form-group form-fields">
+            <label>Form Name</label>
+            <input  name="form_name"  type="text" formControlName="form_name" class="form-control input-sm" ngModel>
+        </div>
+
+        <div  class="form-group form-fields">
+            <label>Submit Buttton Name</label>
+            <input  name="submit_buttton_name"  type="text" formControlName="submit_buttton_name" class="form-control input-sm" ngModel>
+        </div>
+        </div>
+
+    <!-- <div>
+        <button type="submit">submit</button>
+    </div> -->
+
+    <div *ngIf="isShowAddButton">
+        <button (click)="addItem(formCreate)" class="btn btn-secondary btn-sm" >Add Field</button>
+      </div>
+</form>

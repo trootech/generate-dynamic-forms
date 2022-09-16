@@ -1,0 +1,56 @@
+<div class="container form-container">
+  <h2 class="heading-title text-center">Entries list</h2>
+  <div class="back-button">
+    <a href="javascript:void(0)" routerLink="/home"><img height="30" width="30" src="./assets/images/back_icon.svg"></a>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <div *ngIf="column != 'actions'">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{column | uppercase}} </mat-header-cell>
+        <mat-cell *matCellDef="let element;"> {{element?.value[column]}} </mat-cell>
+
+      </div>
+
+      <div *ngIf="column == 'actions'">
+        <mat-header-cell *matHeaderCellDef class="header-align-right"> {{column | uppercase}}</mat-header-cell>
+        <mat-cell *matCellDef="let element;"  class="header-align-right">
+
+          <img class="action-img" data-toggle="tooltip"  data-placement="top" title="Edit form"
+            [routerLink]="['/update_form', id, element.entry_id]" height="24px" width="24px" alt=""
+            src="./assets/images/edit_icon.svg">
+
+          <img height="24px" width="24px" class="action-img"  *ngIf="userRole !=='MODERATOR' &&  userRole !=='User'" data-toggle="tooltip" data-placement="top"
+            (click)="openConfirmationModel(mymodal, element.entry_id)" title="Delete form" alt=""
+            src="./assets/images/delete.svg">
+
+        </mat-cell>
+      </div>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+  </mat-table>
+  <div *ngIf="!dataSource?.data?.length" class="not-available">
+   {{messageContent.noData}}
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{messageContent.deleteEntry}}</h4>
+  </div>
+  <div class="modal-body">
+  {{messageContent.deleteEntery }}
+  </div>
+  <div class="modal-footer">
+    <button type="button" aria-label="Close" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
+     {{messageContent.deleteFormNosButton}}
+    </button>
+    <button type="button" class="btn btn-primary"
+      (click)="modal.close('Save click'); deleteEntry(deleteIndex) ">{{messageContent.deleteFormYesButton}}</button>
+  </div>
+</ng-template>

@@ -1,0 +1,11 @@
+
+<!-- <label for="{{for}}">Choose a {{label}}:</label> -->
+    <select name="{{formControlName}}" formControlName="{{formControlName}}" class="form-select" aria-label="Default select example" (change)="onChangeSelectValue($event)">
+      <option value="{{item.value_name}}" *ngFor="let item of value" >{{item.value_text}}</option>
+    </select>
+
+      
+    <!-- <ng-select2 [data]="exampleData"
+            [placeholder]="'Demo with options'"
+            [width]="300"
+            [options]="options"></ng-select2> -->

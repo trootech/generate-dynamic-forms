@@ -1,0 +1,90 @@
+@import '../../../../assets/styles/controls.scss';
+
+
+.separator {
+    border: 3px solid #e9e9e9;
+    padding: 15px 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px #e9e9e9;
+}
+
+.form-body {
+    padding: 0 35px;
+}
+
+.remove-field{
+    height:22px;
+    float: right;
+    cursor: pointer;
+}
+.icon-field{
+    height:22px;
+    float: right;
+    margin-left: 3px;
+}
+
+.error-message {
+    width: 100%;
+    text-align: center;
+    color: #dc3545;
+}
+
+.validation-msg{
+    border: none !important;
+    margin-top:15px;
+
+}
+
+.btn-set-all{
+    margin-left:10px;
+}
+.add-field-btn{
+    margin-left:15px;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.container{
+    margin: auto;
+//   padding: 10px;
+}
+.form-fields{
+    margin-bottom:20px;
+    
+}
+
+
+    
+.form-fields .input{
+    
+    font-size: 14px;
+}
+
+.paceholder-select{
+    font-size:10px;
+}
+.card-title{
+    color: dimgray;
+    margin: 13px 0px -1px 10px;
+}
+
+.btn-set-all{
+  margin-top:10px;
+}
+
+.li-design{
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.field-box {
+    border-radius: 6px;
+    padding: 10px 10px;
+    background: #212529;
+    margin-bottom: 10px;
+    color: #fff;
+    cursor: move;
+    
+}

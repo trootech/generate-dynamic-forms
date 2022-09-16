@@ -1,0 +1,31 @@
+  <div  class="form-row">
+    <div >
+        <div class="row">
+            <div class="col-md-6 form-group form-item">
+                <label>{{messageContent.multiValueForField}}</label>
+                
+                    <input ref-text name="value_text" class="input-sm"  >
+                
+            </div>
+            <div class="col-md-6">
+                <button type="button" (click)="addItem($event,text.value);text.value = ''" class="btn btn-dark fw-bold">
+                    <img src="./assets/images/plus.svg" class="icon-field" alt="">{{messageContent.addValue}}</button>
+            </div>
+            <div class="required-text-message" *ngIf="message">
+            {{messageContent.errorForEmpetyValue}}
+            </div>
+        </div>
+
+        <div class="card col-md-6 validation-msg">
+            <ul style="padding: 0;">
+              <li *ngFor="let item of fields_values; let i = index;" class="li-design field-box fw-bold">
+                  <span>{{item.value_text}}</span>
+                  <a (click)=" removeIndex(i)" class="delete-li" >
+                    <img src="./assets/images/270-cancel-circle.svg" class="remove-field" alt="">
+                  </a>
+              </li>
+            </ul>
+          </div>
+      
+    </div>
+</div>

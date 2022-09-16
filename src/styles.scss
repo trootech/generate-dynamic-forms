@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~bootstrap/scss/bootstrap';
+@import 'assets/styles/controls.scss';
+
+body{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1d1d1d;
+    text-align: left;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f0f8f8;
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: none !important;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.form-container {
+    padding: 20px 0px ;
+    width: auto;
+    margin: -30px auto !important;
+    box-shadow: 7px 4px 79px #00000050;
+    background: #ffffff !important;
+    border-radius: 8px;
+}
+
+.form-item {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    label {
+        margin-right: 15px;
+        font-size: 16px;
+        max-width: 100%;
+    }
+    input {
+        flex: 1;
+    }
+    select {
+        flex: 1;
+    }
+    ng-multiselect-dropdown {
+        flex: 1;
+    }
+}
+
+.mat-cell{
+    padding: 10px;
+    word-break: break-word;
+}

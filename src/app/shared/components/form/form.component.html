@@ -1,0 +1,73 @@
+<div class="container form-container">
+
+  <h2 class="heading-title">{{messageContent.formList}}</h2>
+
+  <div class="example-container" *ngIf="dataSource">
+    <div class="form-group form-item set-filter">
+      <div class="filter-input">
+        <label >Filter:</label>
+        <input name="filter" type="text" class="form-control input-sm" (keyup)="applyFilter($event)">
+      </div>
+    </div>
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{messageContent.formOfIndex}}</mat-header-cell>
+        <mat-cell *matCellDef="let element;let i = index;"> {{element.id}} </mat-cell>
+      </ng-container>
+   
+      <ng-container matColumnDef="form_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{messageContent.formofName}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.form_name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="header-align-right">{{messageContent.formofAction}}</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="header-align-right">
+          <img height="24px" width="24px" class="action-img"  data-toggle="tooltip" data-placement="top"
+          title="View entries" *ngIf="element.count > 0" alt="" src="./assets/images/file.svg" [routerLink]="['/form_entry', element._id]">
+
+          <img height="24px" width="24px" class="action-img-disablecss" data-toggle="tooltip" data-placement="top"
+            title="View form"  *ngIf="element.count == 0 "
+            alt="" src="./assets/images/file.svg"  (click)="myfunction($event)">
+
+          <img class="action-img" data-toggle="tooltip" *ngIf=" userRole ==='ADMIN'|| userRole ==='MODERATOR'"  data-placement="top" title="Edit form"
+            [routerLink]="['/form-update', element._id]" height="24px" width="24px" alt=""
+            src="./assets/images/edit_icon.svg">
+         
+          <img height="24px" width="24px" class="action-img" data-toggle="tooltip" data-placement="top"
+            title="View form/Add entry" [routerLink]="['/form', element._id]" alt="" src="./assets/images/show_icon.svg">
+
+          <img height="24px" width="24px" *ngIf=" userRole ==='ADMIN'" class="action-img" data-toggle="tooltip" data-placement="top"
+            (click)="openConfirmationModel(myModal, element._id)" title="Delete form" alt=""
+            src="./assets/images/delete.svg">
+
+            <img height="24px" width="24px" class="action-img" data-toggle="tooltip" data-placement="top"
+             title="copy url"  (click)="this.copyInputMessage(element._id)"
+            src="./assets/images/copy.svg">
+        </mat-cell>
+    
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"></mat-row>
+
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+  </div>
+  <div>
+    <ng-template #myModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{messageContent.deleteForm}}</h4>
+      </div>
+      <div class="modal-body">
+        {{messageContent.deleteFormConfirmText}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" aria-label="Close" class="btn btn-primary" (click)="modal.dismiss('Cross click')">
+          {{messageContent.deleteFormNosButton}}
+        </button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click'); deleteForm() ">{{messageContent.deleteFormYesButton}}</button>
+      </div>
+   </ng-template>
+  </div>

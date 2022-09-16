@@ -1,0 +1,10 @@
+<select class="select form-select" multiple  aria-label="Default select example"  data-mdb-filter="true"  name="{{formControlName}}" formControlName="{{formControlName}}" >
+    <option value="{{item.value_name}}" *ngFor="let item of value" >{{item.value_text}}</option>
+</select>
+
+<div style="width:50%">
+    <ng-multiselect-dropdown
+        [settings]="dropdownSettings"
+        [data]="dropdownList">
+    </ng-multiselect-dropdown>
+</div>

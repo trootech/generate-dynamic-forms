@@ -1,0 +1,72 @@
+@import '../../../../assets/styles/controls.scss';
+
+.btn-set-all{
+    margin-top:10px;
+}
+
+.check-input{
+    margin-left:10px;
+    width:80px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.list-group-item {
+    padding: 0;
+}
+
+.error-message {
+    width: 100%;
+    text-align: center;
+    color: #dc3545;
+}
+
+.icon-field{
+    height:18px;
+    float: right;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.image-arrow{
+    display: block;
+    position: absolute;
+    right: 8px;
+    bottom: -5px;
+    &::before {
+        position: relative;
+        right: 0;
+        top: 65%;
+        color: #999;
+        margin-top: 4px;
+        border-style: solid;
+        border-width: 8px 8px 0;
+        border-color: #999 transparent;
+        content: "";
+     }
+
+}
+
+.errors-type{
+    width: 100%;
+    text-align: center;
+    color: #dc3545;
+    display: flex;
+    align-content: stretch;
+    flex-direction: row;
+}
+.errors-type{
+    width: 100%;
+    text-align: center;
+    color: #dc3545;
+    display: flex;
+    align-content: stretch;
+    flex-direction: row;
+}
+
+// .show-or-not{
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: center;
+// }

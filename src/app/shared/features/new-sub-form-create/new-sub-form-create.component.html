@@ -1,0 +1,77 @@
+
+<form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
+     <div  class="list-group list-group-flush">
+        <div class="list-group-item">
+            <h4 class="card-title">Add new field</h4>
+            <div  class="form-row">
+                <div class="form-group form-fields">
+
+                    <div class="form-group form-item">
+                        <label>{{messageContent.fieldName}}</label>
+                        <input formControlName="field_name" name="field_name" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.field_name.errors }" >
+
+                    </div>
+                    <div *ngIf="submitted && f.field_name.errors">
+                        <div *ngIf="f.field_name.errors.required" class="error-message">{{messageContent.requireErrorFieldName}}</div>
+                    </div>
+
+                    <div class="form-group form-item">
+                        <label>{{messageContent.fieldLable}}</label>
+                        <input formControlName="field_label" name="field_label" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.field_label.errors }"><br>
+
+                    </div>
+                    <div *ngIf="submitted && f.field_label.errors">
+                        <div *ngIf="f.field_label.errors.required" class="error-message" >{{messageContent.requireErrorFieldLabel}}</div>
+                    </div>
+                    <div class="form-group form-item">
+                        <label>{{messageContent.selectType}}</label>
+                        <span height="24px" weight="24px" class="image-arrow"  ></span>
+
+                        <select name="field_type" formControlName="field_type" id="cars" form="carform" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.field_type.errors }"
+                         class="form-select" aria-label="Default select example" required>
+
+                            <option value="text">Text</option>
+                            <option value="email">Email</option>
+                            <option value="password">Password</option>
+                            <option value="file">File</option>
+                            <option value="select">Select</option>
+                            <option value="multi-select">Multi-select</option>
+                            <option value="radio">Radio</option>
+                            <option value="checkbox">Checkbox</option>
+                        </select>
+                    </div>
+                    <div *ngIf="submitted && f.field_type.errors" >
+                        <div *ngIf="f.field_type.errors.required" class="error-message">{{messageContent.requireErrorFieldType}}</div>
+                    </div>
+
+                    <div *ngIf="validationForm.controls['field_type'].value  === 'radio'
+                    || validationForm.controls['field_type'].value  === 'select'
+                    || validationForm.controls['field_type'].value  === 'multi-select'
+                    || validationForm.controls['field_type'].value  === 'checkbox'">
+                        <app-multi-value [multiValue]="updateField" (fieldsValue)="getFieldData($event)"></app-multi-value>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div  *ngFor="let item of validationList" class="form-group mb-2">
+                            <input type="checkbox" formControlName="{{item?.name}}" [(ngModel)]="item.isChecked" name="{{item?.name}}" (change)="fetchSelectedItems()">
+                            <label for="{{item?.id}}">{{item?.label}}</label>
+                            <span *ngIf="item?.option && item?.isChecked">
+                                <input maxlength="3" [type]="item?.option?.type"  class="check-input" formControlName="{{item?.option?.name}}" [ngClass]="{ 'is-invalid': submitted && f.maxLengthValue.errors || f.minLengthValue.errors }">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="show-or-not" class="form-group mb-2">
+                        <input type="checkbox" [(ngModel)]="showField" formControlName="is_visible_in_entery" name=" is_visible_in_entery">
+                        <label for="subscribeNews">Show this field value on entry page?</label>
+                    </div>
+                    <button type="submit" class="btn btn-dark fw-bold"><img src="./assets/images/save_white.svg" class="icon-field" alt="">{{messageContent.saveFields}}</button>
+                    <div *ngIf="message">
+                        <span class="errors-type">{{messageContent.emptyValuePass}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

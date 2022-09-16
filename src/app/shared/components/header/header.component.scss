@@ -1,0 +1,226 @@
+
+.navbar-collapse {
+    flex-direction: row-reverse;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.action-img {
+    margin-left: 15px;
+    cursor:pointer;
+}
+
+div.banner-section {
+    background-image: url("../../../../assets/images/bg-intro-2.png");
+    background-size: cover ;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 250px;
+    h1 {
+        display: flex;
+        justify-content: center;
+        height: 150px;
+        flex-wrap: wrap;
+        align-content: center;
+        color: #fff;
+    }
+}
+.mat-menu-trigger{
+    background: none;
+    color: #444444;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 2px solid #19468b;
+    margin-left: 0px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 8px #19468b;
+    background-color: #f9f9f9;
+}
+
+.set-card {
+    position: relative;
+
+    .card {
+        padding: 20px;
+        max-height: 320px;
+        width: 300px;
+        display: flex;
+        background-color: #f9f9f9;
+        position: absolute;
+        z-index: 101;
+        right: 0;
+        top: 52px;
+    }
+}
+
+.logout{
+
+    border: 1px solid #dadce0;
+    width: 70%;
+    height: 51px;
+    margin-left: 43px;
+    margin-top: 20px;
+}
+
+.profile_image_card{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateX(150%);
+    margin-left: -139px;
+}
+
+.header-title{
+    text-align: center;
+    margin-top: 16px;
+}
+
+
+
+.image-preview {
+    height: 120px;
+    width: 120px;
+    margin: 10px 0;
+    display: block;
+  }
+
+  .image-preview-small{
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .picture {
+    width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+
+.GXg3Le{
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    top: -30px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0px 1px 3px 1px rgb(60 64 67 / 15%);
+    color: #3c4043;
+    height: 37px;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    left: 270px;
+    width: 37px;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    color: #3c4043;
+    fill: currentcolor;
+    padding: 3px;
+}
+
+.user-name{
+    text-align: center;
+    margin-top: -19px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.user-email{
+    text-align: center;
+    color: gray;
+}
+
+.footer-modal{
+    height: 68px;
+}
+
+.mat-card-header-text{
+    margin: 0;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #004D3C;
+    font-size: 72px;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.avatar-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #004D3C;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+
+.latter{
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    bottom: 36px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0px 1px 3px 1px rgb(60 64 67 / 15%);
+    color: #3c4043;
+    height: 37px;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    left: 40px;
+    width: 37px;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    color: #3c4043;
+    fill: currentcolor;
+    padding: 3px;
+}
+
+.image-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    background-color: #fff;
+    opacity: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    right: 0;
+    top:0;
+    z-index: 99;
+}

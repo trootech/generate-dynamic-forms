@@ -1,0 +1,78 @@
+
+
+<app-login-header>
+  <div class="container form-container">
+    <form [formGroup]="RegisterForm" #dynamicForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="col-md-12">
+        <h3 class="card-header text-center">{{messageContent.RegisterForm}}</h3>
+        <hr />
+        <div class="form-body">
+          <div class="form-row">
+            <div class="col-md-12 col-sm-12" class="form-group form-fields">
+              <div class="form-group form-item">
+                <label>{{messageContent.RegisterFormName}}</label>
+                <input name="name" type="text" formControlName="name" class="form-control input-sm"
+                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+              </div>
+              <div *ngIf="submitted && f.name.errors">
+                <div *ngIf="f.name.errors.required" class="error-message">{{messageContent.requireErrorName}}</div>
+              </div>
+              <div class="form-group  form-item">
+                <label>{{messageContent.RegisterFormEmail}}</label>
+                <input name="email" type="email" formControlName="email"
+                  class="form-control input-sm" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+              </div>
+              <div *ngIf="submitted && f.email.errors">
+                <div *ngIf="f.email.errors.required" class="error-message">{{messageContent.requireErrorEmail}}</div>
+              </div>
+              <div class="form-group  form-item">
+                <label>{{messageContent.RegisterFormPassword}}</label>
+                <input name="password" type="password" formControlName="password"
+                  class="form-control input-sm" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              </div>
+              <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required" class="error-message">{{messageContent.requireErrorPassword}}</div>
+              </div>
+              <div class="form-group  form-item">
+                <label>{{messageContent.RegisterFormConfirmPassword}}</label>
+                <input name="Confirm_password" type="password" formControlName="Confirm_password"
+                  class="form-control input-sm" [ngClass]="{ 'is-invalid': submitted && f.Confirm_password.errors }">
+              </div>
+              <div *ngIf="submitted && f.Confirm_password.errors">
+                <div *ngIf="f.Confirm_password.errors.required" class="error-message">{{messageContent.requireErrorConfirmPassword}}</div>
+                <div *ngIf="RegisterForm.get('Confirm_password').errors.confirmPasswordValidator" class="error-message">{{messageContent.requireErrorPasswordNotMatch}}</div>
+              </div>
+              <div class="form-group  form-item">
+                <label>{{messageContent.profileImage}}</label>
+                <input name="profile_image" type="file" (change)="onChange($event)"
+                  class="form-control input-sm">
+              </div>
+              <!-- <div *ngIf="submitted && f.profile_image.errors">
+                <div *ngIf="f.profile_image.errors.required" class="error-message">{{messageContent.requireErrorConfirmPassword}}</div>
+                <div *ngIf="RegisterForm.get('profile_image').errors.confirmPasswordValidator" class="error-message">{{messageContent.requireErrorPasswordNotMatch}}</div>
+              </div> -->
+              
+              <div class="form-group  form-item">
+                <label>{{messageContent.selectRole}}</label>
+                <span height="24px" weight="24px" class="image-arrow"  ></span>  
+                <select name="roles" formControlName="roles" id="roles" form="carform" class="form-control"
+                 class="form-select" aria-label="Default select example" required>
+                 <option value="admin">admin</option>
+                 <option value="moderator">moderator</option>
+                 <option value="user">user</option>
+                </select>
+            </div>
+            <div *ngIf="submitted && f.roles.errors" >
+              <div *ngIf="f.roles.errors.required" class="error-message">{{messageContent.requireErrorRoleType}}</div>
+          </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="card-footer text-center form-body text-end">
+          <button class="btn btn-primary fw-bold">{{messageContent.buttonRegister}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-login-header>

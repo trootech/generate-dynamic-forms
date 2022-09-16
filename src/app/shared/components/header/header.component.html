@@ -1,0 +1,84 @@
+
+
+
+<div class="banner-section"  >
+
+    <nav class="navbar navbar-expand-lg navbar-dark" role="navigation">
+      <div class="container" id="navfluid">
+        <a class="navbar-brand" routerLink="/home"><img src="../../../../assets/images/logo.png" alt="trootech" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item" *ngIf="!headermenu">
+              <!-- *ngIf="!headermenu || userRole ==='ROLE_USER' || userRole ==='ROLE_Admin' || userRole ==='ROLE_Moderator'" -->
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/home']">Home</a>
+            </li>
+
+            <li class="nav-item" *ngIf="!headermenu && userRole ==='ADMIN' ">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/create-new-form']" routerLinkActive="active" >Create new form</a>
+            </li>
+             <li class="nav-item" *ngIf="headermenu">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/register']" routerLinkActive="active" >Register</a>
+            </li>
+             <li class="nav-item" *ngIf="headermenu">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
+            </li>
+             <li class="nav-item" *ngIf="!headermenu">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/help']" routerLinkActive="active" >How to generate form?</a>
+            </li>
+             <li class="nav-item set-card" *ngIf="!headermenu">
+
+                <!-- <button class="mat-menu-trigger" mat-button (click)=" open(mymodal)"> <img height="25px" width="25px" alt="user"
+                  title="user" src="./assets/images/person_icon.svg"><span>{{authObj.name}}</span></button> -->
+                  <button class="mat-menu-trigger" mat-button (click)="showDiv.previous = !showDiv.previous;">
+                    <div *ngIf="!authObj.profile_image" [ngStyle]="{background: color}" class="avatar-image">{{firstLatter}}</div>
+                  
+                    <div *ngIf="authObj.profile_image" class="image-preview-small">
+                      <img [style.backgroundImage]="'url(http://localhost:5000'+this.profile+')'" class="picture"
+                        *ngIf="!imagedata">
+                      <img [src]="url" class="picture" *ngIf="imagedata">
+                    </div>
+                    <span>{{authObj.name}}</span>
+                  </button>
+                    <div class="card"  *ngIf="showDiv.previous === true">
+                      <div>
+                        <div class="image-content">
+                          <div *ngIf="!authObj.profile_image" [ngStyle]="{background: color}" class="profile-image">{{firstLatter}}</div>
+                          <div *ngIf="authObj.profile_image" class="image-preview">
+                            <img [style.backgroundImage]="'url(http://localhost:5000'+this.profile+')'" class="picture"
+                              *ngIf="!imagedata">
+                            <img [src]="url" class="picture" *ngIf="imagedata">
+                          </div>
+                          <input #fileInput type="file" hidden (change)="onFileChanged($event)">
+                          <button jsaction="click:lj3vef" (click)="fileInput.click()" aria-label="Change profile picture" class="latter LgkqPe"
+                            jsname="twx2Pc" data-cp=""><svg width="18" height="18" viewBox="0 0 24 24" focusable="false" class="uarSJe NMm5M">
+                              <path
+                                d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 14H4V7h16v12z">
+                              </path>
+                              <path d="M12 9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+                            </svg></button>
+                        </div>
+
+                        <div>
+                          <div class="user-name">{{authObj.name}}</div>
+                          <div class="user-email">{{authObj.email}}</div>
+                        </div>
+                        <div>
+
+                          <button  class="logout btn btn-light" (click)="logoutUser()" ><span >Logout</span></button>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="overlay" (click)="showDiv.previous = !showDiv.previous;" *ngIf="showDiv.previous === true"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <h1>Create your own Dynamic form.</h1>
+      </div>
+      
+      

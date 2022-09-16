@@ -1,0 +1,60 @@
+.form-control {
+    width: 95%;
+    margin-left: 69px;
+    margin-top: -29px;
+}
+.label-text{
+    margin-left: 6px;
+}
+.lower-text{
+    text-transform: lowercase;
+    display: none;
+}
+.lower-name{
+    margin-bottom:10px;
+    margin-left: 89px;
+}
+.btn-value-text{
+
+    // margin-left: 341px;
+    // margin-top: -82px;
+}
+
+.field-box {
+    border-radius: 6px;
+    padding: 10px 10px;
+    background: #212529;
+    margin-bottom: 10px;
+    color: #fff;
+    list-style: none;
+    
+}
+
+.remove-field{
+    height:23px;
+    float: right;
+    margin-top: -23px;
+}
+.validation-msg{
+    border: none !important;
+    margin-top:15px;
+
+}
+
+
+.delete-li {
+    cursor: pointer;
+    display: block;
+}
+
+
+.icon-field{
+    height:22px;
+    float: right;
+    margin-left: 3px;
+}
+
+.required-text-message{
+    margin-left: 102px;
+    color: red;
+}

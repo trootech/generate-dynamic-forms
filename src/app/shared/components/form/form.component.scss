@@ -1,0 +1,51 @@
+@import '../../../../assets/styles/controls.scss';
+
+.list-content{
+    list-style: none;
+}
+.add-create-form{
+    float: right;
+     margin-top:60px;
+}
+.generate-form{
+   
+    margin-left:800px;
+}
+.heading-title{
+    text-align: center;
+}
+
+.action-img {
+    margin-left: 15px;
+    cursor:pointer;
+}
+
+.action-img-disablecss{
+    margin-left: 15px;
+    cursor:pointer;
+    opacity:0.5;
+    pointer-events:none;
+
+}
+
+.header-align-right{
+    display: flex;
+    justify-content: flex-end;
+    
+  }
+
+  .set-filter {
+      position: relative;
+  }
+
+  .filter-input {
+    width: max-content;
+    position: absolute;
+    right: 25px;
+    display: inherit;
+  }
+
+  .example-element-row:not(.example-expanded-row):hover {
+    background: #f5f5f5;
+  }
+  

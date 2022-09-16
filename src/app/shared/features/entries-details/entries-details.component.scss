@@ -1,0 +1,33 @@
+.add-entry-data{
+    float: right;
+}
+.close-btn{
+    height: 28px;
+    width: 27px;
+    border-radius: 50%;
+}
+
+.action-img {
+    margin-left: 10px;
+    cursor:pointer;
+}
+
+.back-button {
+    position: relative;
+    left: 20px;
+    top: -39px;
+    width: max-content;
+}
+
+.header-align-right{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.not-available{
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+}
+  

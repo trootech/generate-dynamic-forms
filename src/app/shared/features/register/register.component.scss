@@ -1,0 +1,38 @@
+@import '../../../../assets/styles/controls.scss';
+
+
+.form-container {
+    padding: 20px 0px ;
+    width: 500px;
+    margin: 0px auto !important;
+    box-shadow: 7px 4px 79px #00000050;
+    background: #ffffff !important;
+    border-radius: 8px;
+    transform: translateY(10%);
+}
+
+.form-body {
+    padding: 0 35px;
+}
+
+.error-message {
+    width: 100%;
+    text-align: center;
+    color: #dc3545;
+}
+
+.container{
+    margin: auto;
+//   padding: 10px;
+}
+.form-fields{
+    margin-bottom:20px;
+    
+}
+
+
+    
+.form-fields .input{
+    
+    font-size: 14px;
+}

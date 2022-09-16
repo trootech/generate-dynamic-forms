@@ -1,0 +1,84 @@
+<div class="container form-container">
+    <div class="back-button">
+        <a href="javascript:void(0)" routerLink="/home"><img height="30" width="30" src="./assets/images/back_icon.svg"></a>
+    </div>
+    <form [formGroup]="form"  *ngIf="formDataById">
+        <div class="col-md-12">
+        <h3 class="text-center">{{formDataById.form_name}}</h3>
+            <div class="form-body">
+                <div class="form-row">
+                    <div class="col-md-12 col-sm-12"  class="form-group ">
+                        <div class="col-md-12 col-sm-12" *ngFor="let fields of formDataById.fields_id; let i = index;" class="form-group">
+                            <div *ngIf="fields?.field_type === 'text'|| fields?.field_type === 'email'||fields?.field_type === 'password' "
+                                class="form-group form-item">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" style="margin-top:15px;">{{fields?.field_label}}:
+                                </label>
+                                <input [formControlName]="fields?.field_name"
+                                name="{{fields?.field_name}}"
+                                type="{{fields?.field_type}}"
+                                class="form-control input-sm"
+                                (change)="onChange($event, fields?.field_type)">
+                            </div>
+
+                            <div *ngIf=" fields?.field_type === 'file' "  class="form-group form-item">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" style="margin-top:15px;">{{fields?.field_label}}:</label>
+                                <input [formControlName]="fields?.field_name"
+                                    name="{{fields?.field_name}}"
+                                    type="{{fields?.field_type}}"
+                                    class="form-control input-sm"
+                                    (change)="onChange($event, fields?.field_type)">
+                            </div>
+
+                            <div *ngIf=" fields?.field_type === 'checkbox' " [formGroupName]="fields?.field_name"  class="form-group">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" style="margin-top:15px;">{{fields?.field_label}}:</label><br>
+                                <div  *ngFor="let values of fields.field_values">
+                                    <input [formControlName]="values?.value_name"
+                                        type="checkbox"
+                                        name="{{fields?.field_name}}"
+                                        value="{{values.value_name}}"
+                                        (change)="onChange($event, fields?.field_type)">
+                                    <label for="{{values.value_name}}"> {{values.value_text}}</label><br>
+                                </div>
+                            </div>
+
+                            <div *ngIf=" fields?.field_type === 'radio' "  class="form-group ">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" style="margin-top:15px;">{{fields?.field_label}}:</label><br>
+                                <div  *ngFor="let values of fields.field_values">
+
+                                    <input [formControlName]="fields?.field_name" id="{{values.value_name}}"
+                                        type="radio"
+                                        name="{{fields?.field_name}}"
+                                        [value]='values.value_name'
+                                        (change)="onChange($event, fields?.field_type, fields?.field_name)">
+                                    <label for="{{values.value_name}}"> {{values.value_text}}</label><br>
+                                </div>
+                            </div>
+
+                            <div *ngIf=" fields?.field_type === 'select' "  class="form-group form-item">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" style="margin-top:15px;">{{fields?.field_label}}:</label><br>
+                                    <select name="{{fields?.field_name}}" class="form-select" aria-label="Default select example"
+                                    [formControlName]="fields?.field_name" (change)="onChange($event, fields?.field_type)">
+                                        <option value="{{values.value_name}}"  *ngFor="let values of fields.field_values" >{{values.value_text}}</option>
+                                    </select>
+                            </div>
+
+                            <div *ngIf="fields?.field_type === 'multi-select'" class="form-group form-item">
+                                <label [ngClass]="{ 'required': fields?.validation.required}" >{{fields?.field_label}}:</label>
+
+                                <ng-multiselect-dropdown [formControlName]="fields?.field_name"
+                                    [settings]="dropdownSettings"
+                                    [data]="fields?.field_values"
+                                    (onSelect)="onChange($event, fields?.field_type)"
+                                    >
+                                </ng-multiselect-dropdown>
+                            </div>
+                        </div>
+                        <div class="card-footer form-body text-center mb-3 mt-3">
+                            <button type="submit" class="btn btn-primary fw-bold" style="margin-top:10px ;" (click)="onSubmit()" >{{formDataById.submitButtonName}}</button>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
