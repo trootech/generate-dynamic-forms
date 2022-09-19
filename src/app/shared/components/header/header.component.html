@@ -33,10 +33,10 @@
                 <!-- <button class="mat-menu-trigger" mat-button (click)=" open(mymodal)"> <img height="25px" width="25px" alt="user"
                   title="user" src="./assets/images/person_icon.svg"><span>{{authObj.name}}</span></button> -->
                   <button class="mat-menu-trigger" mat-button (click)="showDiv.previous = !showDiv.previous;">
-                    <div *ngIf="!authObj.profile_image" [ngStyle]="{background: color}" class="avatar-image">{{firstLatter}}</div>
-                  
-                    <div *ngIf="authObj.profile_image" class="image-preview-small">
-                      <img [style.backgroundImage]="'url(http://localhost:5000'+this.profile+')'" class="picture"
+                    <div *ngIf="!authObj.profile_image  && !profile" [ngStyle]="{background: color}" class="avatar-image">{{firstLatter}}</div>
+
+                    <div *ngIf="authObj.profile_image || profile" class="image-preview-small">
+                      <img [style.backgroundImage]="'url(http://localhost:5000'+profile+')'" class="picture"
                         *ngIf="!imagedata">
                       <img [src]="url" class="picture" *ngIf="imagedata">
                     </div>
@@ -45,9 +45,9 @@
                     <div class="card"  *ngIf="showDiv.previous === true">
                       <div>
                         <div class="image-content">
-                          <div *ngIf="!authObj.profile_image" [ngStyle]="{background: color}" class="profile-image">{{firstLatter}}</div>
-                          <div *ngIf="authObj.profile_image" class="image-preview">
-                            <img [style.backgroundImage]="'url(http://localhost:5000'+this.profile+')'" class="picture"
+                          <div *ngIf="!authObj.profile_image  && !profile" [ngStyle]="{background: color}" class="profile-image">{{firstLatter}}</div>
+                          <div *ngIf="authObj.profile_image || profile" class="image-preview">
+                            <img [style.backgroundImage]="'url(http://localhost:5000'+profile+')'" class="picture"
                               *ngIf="!imagedata">
                             <img [src]="url" class="picture" *ngIf="imagedata">
                           </div>
@@ -80,5 +80,4 @@
           </nav>
           <h1>Create your own Dynamic form.</h1>
       </div>
-      
-      
+

@@ -52,14 +52,7 @@ export class HeaderComponent implements OnInit {
         res => {
           if (res) {
             this.formService.showSuccess(this.messageContent.UploadProfile, this.messageContent.sucessMessageTitle)
-            var reader = new FileReader();
-
-            reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-            reader.onload = (event) => { // called once readAsDataURL is completed
-              this.url = event.target.result;
-              this.imagedata = true
-            }
+            this.profile = res['profile_image']
           }
         },
         error => {
@@ -73,7 +66,7 @@ getprofileinfo(){
   .subscribe(
     res => {
       if (res) {
-        this.profile = res['profile_image']              
+        this.profile = res['profile_image']
       }
     },
     error => {
