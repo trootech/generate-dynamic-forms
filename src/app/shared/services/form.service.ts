@@ -4,13 +4,13 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from './api.service';
 import { RequestParameter } from '../model/request-parameter';
-
+import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
 
-  BASE_URL = 'http://localhost:5000/'
+  BASE_URL = environment.base_url//'https://generate-dynamic-form.herokuapp.com/'
 
   constructor (
     private toastr: ToastrService,

@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-BASE_URL = 'http://localhost:5000/';
+BASE_URL = environment.base_url//'https://generate-dynamic-form.herokuapp.com/';
 
 constructor(
   private http: HttpClient,
@@ -23,7 +23,7 @@ constructor(
   login(formBody:any):Observable<any>{
     return this.http.post(this.BASE_URL+'auth/signin',formBody);
   }
-  
+
   forgetpassword(formBody:any):Observable<any>{
     return this.http.post(this.BASE_URL+'auth/changepassword',formBody);
   }
