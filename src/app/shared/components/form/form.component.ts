@@ -7,6 +7,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { MessageContent } from '../../model/message-content';
 import { PlatformLocation } from '@angular/common';
+import { environment } from 'src/environments/environment.prod';
 
 
 export interface FormData {
@@ -40,8 +41,8 @@ export class FormComponent implements OnInit {
     private formService: FormService,
     private modalService: NgbModal,
     private route: Router,
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit(): void {
@@ -50,11 +51,11 @@ export class FormComponent implements OnInit {
     this.userRole = this.authObj.user_role.split("_")[1];
     this.getFormList();
   }
- 
+
   getFormList() {
     this.formService.getFormDataList().subscribe((res:any) => {
       if(res && res.data) {
-    
+
           // this.formDataList =res.data;
           res.data.forEach((element, index) => {
             let id = index+1;
@@ -139,7 +140,7 @@ export class FormComponent implements OnInit {
   }
 
   copyInputMessage(element:any){
-    var resquestUrl = 'http://localhost:5000/forms/by/?id='+element
+    var resquestUrl = environment.base_url+'forms/by/?id='+element
     navigator.clipboard.writeText(resquestUrl);
     this.formService.showSuccess(this.messageContent.copyData,this.messageContent.sucessMessageTitle);
   }

@@ -4,7 +4,7 @@ import { FormService } from '../../services/form.service';
 import { MessageContent } from '../../model/message-content';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../services/auth.service';
-
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-header',
@@ -26,6 +26,8 @@ export class HeaderComponent implements OnInit {
 
   letters = '0123456789ABCDEF';
   color = '#';
+
+  baseURL = environment.base_url
 
   @Output() imagefilechange:EventEmitter<string>= new EventEmitter();
   url:any;

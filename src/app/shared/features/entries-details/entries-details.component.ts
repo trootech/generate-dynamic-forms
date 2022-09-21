@@ -56,30 +56,31 @@ export class EntriesDetailsComponent implements OnInit, AfterViewInit {
     this.formService.getListEnteriesById(this.id).subscribe(
       (res: any) => {
         if(res && res.data){
-          
+
           this.entryDataById = res.data;
             let data = this.entryDataById;
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
+            let indx = data.length - 1;
             data.forEach((element)=>{
               // let el = element.is_visible_in_entery;
               element.is_visible_in_entery.forEach(el => {
-                for (const key in this.entryDataById[0]?.value){
+                for (const key in this.entryDataById[indx]?.value){
                   if(key === el){
                     console.log(key)
-                        delete this.entryDataById[0]?.value[key]
+                        delete this.entryDataById[indx]?.value[key]
                     }
                 }
               });
             });
 
             if(!isDeleted){
-              for (const key in this.entryDataById[0]?.value) {
+              for (const key in this.entryDataById[indx]?.value) {
                 if (
                   Object.prototype.hasOwnProperty.call(
-                    this.entryDataById[0]?.value,
+                    this.entryDataById[indx]?.value,
                     key
                   )
                 ) {

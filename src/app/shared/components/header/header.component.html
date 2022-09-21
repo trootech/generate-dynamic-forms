@@ -36,7 +36,7 @@
                     <div *ngIf="!authObj.profile_image  && !profile" [ngStyle]="{background: color}" class="avatar-image">{{firstLatter}}</div>
 
                     <div *ngIf="authObj.profile_image || profile" class="image-preview-small">
-                      <img [style.backgroundImage]="'url(http://localhost:5000'+profile+')'" class="picture"
+                      <img [style.backgroundImage]="'url('+baseURL+profile+')'" class="picture"
                         *ngIf="!imagedata">
                       <img [src]="url" class="picture" *ngIf="imagedata">
                     </div>
@@ -47,7 +47,7 @@
                         <div class="image-content">
                           <div *ngIf="!authObj.profile_image  && !profile" [ngStyle]="{background: color}" class="profile-image">{{firstLatter}}</div>
                           <div *ngIf="authObj.profile_image || profile" class="image-preview">
-                            <img [style.backgroundImage]="'url(http://localhost:5000'+profile+')'" class="picture"
+                            <img [style.backgroundImage]="'url('+baseURL+profile+')'" class="picture"
                               *ngIf="!imagedata">
                             <img [src]="url" class="picture" *ngIf="imagedata">
                           </div>
