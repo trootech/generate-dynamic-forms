@@ -89,7 +89,7 @@ Sample form API response if you don't want to use any backend application then y
 ```
 
 
-## How to create dynamic forms:
+## How to create dynamic forms
 - Create a new admin user to generate, view and edit forms: 
 
 ![image](https://user-images.githubusercontent.com/25265362/192757199-1bfcf8ec-b722-4cc6-bd8b-ddbb5db8dc42.png)
