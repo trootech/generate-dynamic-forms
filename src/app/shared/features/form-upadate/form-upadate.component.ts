@@ -29,7 +29,8 @@ export class FormUpadateComponent implements OnInit {
   currentField:any;
   formTitle = new FormControl();
   messageContent = new MessageContent();
-  
+  isLoading = true;
+
   constructor(
     private modalService: NgbModal,
     private formService: FormService,
@@ -64,7 +65,7 @@ export class FormUpadateComponent implements OnInit {
 
     this.formService.getFormData(this.id).subscribe((res: any) => {
       this.UpdateFormDataById = res.data;
-
+      this.isLoading = false;
       this.UpdateFormDataById.fields_id.forEach( (element, index) => {
         const propKey = ['createdAt', 'updatedAt', '__v', 'iseditable', 'isvisibletolist'];
         const removeProperty = (propKey, { [propKey]: propValue, ...rest }) => rest;
@@ -191,6 +192,7 @@ export class FormUpadateComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     const newBody =
     { _id: this.UpdateFormDataById._id,
       form_name: this.UpdateFormDataById.form_name,
@@ -199,10 +201,13 @@ export class FormUpadateComponent implements OnInit {
       fields: this.UpdateFormDataById.fields_id,
     }
     this.formService.updateFormFieldsValue(newBody).subscribe((res: any) => {
+      this.isLoading = false;
+
       this.formService.showSuccess("Data shown successfully !!", "Field save")
       this.route.navigate(['/home']);
     },
     err => {
+      this.isLoading = false;
       const error = err ;
     })
   }

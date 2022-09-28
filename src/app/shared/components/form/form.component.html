@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <div class="container form-container">
 
   <h2 class="heading-title">{{messageContent.formList}}</h2>
@@ -15,7 +16,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{messageContent.formOfIndex}}</mat-header-cell>
         <mat-cell *matCellDef="let element;let i = index;"> {{element.id}} </mat-cell>
       </ng-container>
-   
+
       <ng-container matColumnDef="form_name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{messageContent.formofName}}</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.form_name}} </mat-cell>
@@ -34,7 +35,7 @@
           <img class="action-img" data-toggle="tooltip" *ngIf=" userRole ==='ADMIN'|| userRole ==='MODERATOR'"  data-placement="top" title="Edit form"
             [routerLink]="['/form-update', element._id]" height="24px" width="24px" alt=""
             src="./assets/images/edit_icon.svg">
-         
+
           <img height="24px" width="24px" class="action-img" data-toggle="tooltip" data-placement="top"
             title="View form/Add entry" [routerLink]="['/form', element._id]" alt="" src="./assets/images/show_icon.svg">
 
@@ -46,7 +47,7 @@
              title="copy url"  (click)="this.copyInputMessage(element._id)"
             src="./assets/images/copy.svg">
         </mat-cell>
-    
+
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

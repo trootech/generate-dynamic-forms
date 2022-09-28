@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   mainForm: any = {};
   messageContent = new MessageContent();
   userData :any;
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -73,6 +74,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+    this.isLoading = true;
 
     let param = {}
     param['email'] = this.loginForm.value.email
@@ -82,6 +84,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           if (res.success == true) {
+            this.isLoading = false;
             this.userData = res.user_role;
             var localStorageObject ={"userid":res.id, "name":res.name, "access-token":res.accessToken,"email":res.email,"refresh-token":res.refreshToken,"user_role":res.roles,"profile_image":res.profile_image};
             localStorage.setItem('authObject', JSON.stringify(localStorageObject));
@@ -97,6 +100,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
+          this.isLoading = false;
           this.formService.showError(error.error.message, this.messageContent.errorMessageTitle)
         });
 

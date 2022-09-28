@@ -37,6 +37,7 @@ export class FormComponent implements OnInit {
   userRole:any;
   url: any;
   messageContent = new MessageContent();
+  isLoading = false;
   constructor(
     private formService: FormService,
     private modalService: NgbModal,
@@ -53,9 +54,10 @@ export class FormComponent implements OnInit {
   }
 
   getFormList() {
+    this.isLoading = true;
     this.formService.getFormDataList().subscribe((res:any) => {
       if(res && res.data) {
-
+          this.isLoading = false;
           // this.formDataList =res.data;
           res.data.forEach((element, index) => {
             let id = index+1;

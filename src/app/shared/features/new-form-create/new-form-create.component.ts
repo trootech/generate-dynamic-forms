@@ -26,9 +26,10 @@ export class NewFormCreateComponent implements OnInit {
   mainForm: any = {};
   isShowAddFields = false;
   deleteIndex ;
-  closeResult: string = '';  
+  closeResult: string = '';
   formKey = '';
   messageContent = new MessageContent();
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +41,7 @@ export class NewFormCreateComponent implements OnInit {
   ngOnInit(): void {
     this.newDynamicForm = this.formBuilder.group({
       form_name: ['', Validators.required],
-    
+
       submitButtonName: ['', Validators.required],
     });
 
@@ -57,7 +58,7 @@ export class NewFormCreateComponent implements OnInit {
   }
 
   getFieldData(data: any) {
-    
+
     if (data.fieldId === 1) {
       this.mainForm['form_name'] =
         this.newDynamicForm.controls['form_name'].value;
@@ -69,7 +70,7 @@ export class NewFormCreateComponent implements OnInit {
       this.mainForm['fields'].push(data);
     }
 
-    this.isShowAddFields = false;   
+    this.isShowAddFields = false;
   }
 
   removeField(index: any) {
@@ -86,6 +87,7 @@ export class NewFormCreateComponent implements OnInit {
     if (this.newDynamicForm.invalid) {
       return;
     }
+    this.isLoading = true;
     let params: any = {};
 
     params['form_name'] = this.mainForm['form_name'];
@@ -95,6 +97,7 @@ export class NewFormCreateComponent implements OnInit {
 
     this.formService.formGenerator(params).subscribe(
       (res: any) => {
+        this.isLoading = false;
         this.formService.showSuccess(
           this.messageContent.sucessMessage,
           this.messageContent.sucessMessageTitle
@@ -109,6 +112,7 @@ export class NewFormCreateComponent implements OnInit {
         this.route.navigate(['/home']);
       },
       (err) => {
+        this.isLoading = false;
         this.errorMessage = err.error.error;
       }
     );
@@ -122,14 +126,14 @@ export class NewFormCreateComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-  } 
+  }
 
   private randomString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
     for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
+      result += characters.charAt(Math.floor(Math.random() *
  charactersLength));
    }
    return result;

@@ -24,7 +24,7 @@
             <div *ngIf="submitted && f.submitButtonName.errors">
               <div *ngIf="f.submitButtonName.errors.required" class="error-message">{{messageContent.requireErrorSubmitButtonName}}</div>
             </div>
-<!-- 
+<!--
             <div class="card col-md-12 validation-msg">
               <ul *ngIf="mainForm?.fields?.length > 0" cdkDropList
                 [cdkDropListData]=" mainForm.fields"
@@ -56,7 +56,7 @@
                 </div>
               </div>
             </div>
-            
+
             <button type="button" (click)="addField()" class="btn btn-dark fw-bold"><img src="./assets/images/plus.svg"
                 class="icon-field" alt="">{{messageContent.addfields}}</button>
           </div>
@@ -74,7 +74,7 @@
     </div>
   </form>
 </div>
-
+<app-loading *ngIf="isLoading"></app-loading>
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">{{messageContent.deleteField}}</h4>

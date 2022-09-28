@@ -32,9 +32,10 @@
           <button class="btn btn-primary fw-bold ">{{messageContent.LoginButtom}}</button>
           <a class="fw-bold forgot-btn" routerLink="/forget-password">{{messageContent.forgetpassword}}</a>
         </div>
-       
+
       </div>
     </form>
   </div>
 </app-login-header>
 
+<app-loading *ngIf="isLoading"></app-loading>

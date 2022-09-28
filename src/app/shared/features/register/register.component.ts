@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   mainForm: any = {};
   messageContent = new MessageContent();
   file_name:any
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,6 +58,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.isLoading = true;
     this.submitted = true;
     if (this.RegisterForm.invalid) {
       return;
@@ -74,11 +77,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           if (res.success == true) {
+            this.isLoading = false;
+
             this.formService.showSuccess(this.messageContent.RegisterMessage, this.messageContent.sucessMessageTitle)
             this.route.navigate(['/login']);
           }
         },
         error => {
+          this.isLoading = false;
           this.formService.showError(error.message, this.messageContent.errorMessageTitle)
         });
 

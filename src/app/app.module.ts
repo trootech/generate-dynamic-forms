@@ -37,6 +37,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatCardModule } from "@angular/material/card"
 import { ForgetPasswordComponent } from './shared/features/forget-password/forget-password.component';
 import { LoginHeaderComponent } from './shared/components/login-header/login-header.component';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { LoginHeaderComponent } from './shared/components/login-header/login-hea
     RegisterComponent,
     LoginComponent,
     ForgetPasswordComponent,
-    LoginHeaderComponent
+    LoginHeaderComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,7 @@ import { LoginHeaderComponent } from './shared/components/login-header/login-hea
     NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    NgxAwesomePopupModule.forRoot(), 
+    NgxAwesomePopupModule.forRoot(),
     ConfirmBoxConfigModule.forRoot(),
     ToastrModule.forRoot(),
     MaterialModule,

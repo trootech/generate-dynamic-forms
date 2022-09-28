@@ -35,7 +35,8 @@ export class EntriesDetailsComponent implements OnInit, AfterViewInit {
   entryDataById: any;
   formid!: any;
   messageContent = new MessageContent();
-  userRole:any
+  userRole:any;
+  isLoading = false;
   constructor(
     private formService: FormService,
     private actRoute: ActivatedRoute,
@@ -53,10 +54,11 @@ export class EntriesDetailsComponent implements OnInit, AfterViewInit {
   }
 
   getlistEntriesbyid(isDeleted = false) {
+    this.isLoading = true;
     this.formService.getListEnteriesById(this.id).subscribe(
       (res: any) => {
         if(res && res.data){
-
+          this.isLoading = false;
           this.entryDataById = res.data;
             let data = this.entryDataById;
             this.dataSource = new MatTableDataSource(data);
@@ -101,6 +103,7 @@ export class EntriesDetailsComponent implements OnInit, AfterViewInit {
         }
       },
       (err) => {
+        this.isLoading = false;
         console.log(err);
       }
     );

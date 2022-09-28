@@ -27,6 +27,7 @@ export class ForgetPasswordComponent implements OnInit {
   messageContent = new MessageContent();
   userData :any;
   resetpassword : boolean = false
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,6 +54,8 @@ export class ForgetPasswordComponent implements OnInit {
 
 
   onSubmit() {
+    this.isLoading = true;
+
     this.resetpassword = true
     this.submitted = true;
     if (this.resetPasswordForm.invalid) {
@@ -66,12 +69,16 @@ export class ForgetPasswordComponent implements OnInit {
     this.authService.forgetpassword(param)
       .subscribe(
         res => {
+
           if (res) {
+            this.isLoading = false;
+
             this.formService.showSuccess(res.message, this.messageContent.sucessMessageTitle)
             this.route.navigateByUrl("/login")
           }
         },
         error => {
+          this.isLoading = false;
           this.formService.showError(error.error.message, this.messageContent.errorMessageTitle)
         });
 

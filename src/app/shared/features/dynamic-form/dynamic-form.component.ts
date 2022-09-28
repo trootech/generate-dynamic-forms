@@ -34,6 +34,7 @@ export class DynamicFormComponent implements OnInit {
   cover_image: any;
   filePath: string;
   public form: FormGroup;
+  isLoading = true
 
   constructor(
     private formService: FormService,
@@ -72,6 +73,7 @@ export class DynamicFormComponent implements OnInit {
     };
 
     this.formService.getFormData(this.id).subscribe((res: any) => {
+      this.isLoading = false;
       this.formDataById = res.data;
       this.formDataById.fields_id.forEach((field, index) => {
         let fieldBase:any = {};
@@ -103,12 +105,17 @@ export class DynamicFormComponent implements OnInit {
       }
     },
     err => {
+      this.isLoading = false;
       this.formDataById = err;
     })
   }
 
   loadData () {
+    this.isLoading = true;
+
     this.formService.getFromAndEnteriesById(this.id, this.entryId).subscribe((res: any) => {
+      this.isLoading = false;
+
       this.profileData = res.data[0];
        for (const key in this.profileData.value) {
          if (Object.prototype.hasOwnProperty.call(this.profileData.value, key)) {
@@ -130,6 +137,7 @@ export class DynamicFormComponent implements OnInit {
        }
      },
      err =>{
+      this.isLoading = false;
        console.log(err)
      });
 
@@ -231,6 +239,7 @@ export class DynamicFormComponent implements OnInit {
   onSubmit() {
     var retrievedObject = localStorage.getItem('authObject');
     var authObj = JSON.parse(retrievedObject);
+    this.isLoading = true;
     if(authObj.user_role !== 'ROLE_USER'){
         let fieldData : any= {};
         var fd = new FormData();
@@ -255,6 +264,7 @@ export class DynamicFormComponent implements OnInit {
 
         this.formService.submitFormFieldsValue(fd).subscribe((res: any) => {
           if(res.success == true){
+            this.isLoading = false;
             this.formService.showSuccess("Data shown successfully !!", "Field save")
             this.route.navigate(['/form_entry', this.formDataById._id]);
           }
